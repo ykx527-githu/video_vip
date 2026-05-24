@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name              全网VIP视频免费破解去广告【最新3.1】
 // @namespace         video_vip
-// @version           3.1.5
+// @version           3.1.6
 // @description       全网VIP视频免费破解去广告，适配PC+移动，全网VIP视频解析：爱奇艺、腾讯、优酷、bilibili等视频免费解析！🔥真4K高清🔥【脚本长期维护更新，完全免费，无广告，仅限学习交流！！】
 // @icon              https://cdn.jsdmirror.com/gh/88lin/picx-images-hosting@master/favicon.67xwxgc03y.svg
 // @author            茉灵智库：https://blog.88lin.eu.org/article/46
@@ -50,6 +50,8 @@
 // @grant             GM_xmlhttpRequest
 // @charset		      UTF-8
 // @license           GPL License
+// @tag               免费看剧
+// @tag               高清视频
 // @downloadURL https://cdn.jsdmirror.com/gh/88lin/video_vip@main/video_vip.user.js
 // @updateURL https://cdn.jsdmirror.com/gh/88lin/video_vip@main/video_vip.user.js
 // ==/UserScript==
@@ -298,7 +300,8 @@ const superVip = (function () {
                         #${_CONFIG_.vipBoxId} .vip_icon > .img_box{background:#6d28d9;border-color:#a78bfa;box-shadow:0 5px 16px rgba(109,40,217,.34),inset 0 1px 0 rgba(255,255,255,.18);}
                         #${_CONFIG_.vipBoxId} #vip_auto{color:#f5f3ff !important;background:#4338ca;border-color:#a5b4fc;box-shadow:0 5px 16px rgba(67,56,202,.3),inset 0 1px 0 rgba(255,255,255,.18);}
                         #${_CONFIG_.vipBoxId} #vip_reload{color:#fff1f2 !important;background:#be123c;border-color:#fda4af;box-shadow:0 5px 16px rgba(190,18,60,.28),inset 0 1px 0 rgba(255,255,255,.18);}
-                        #${_CONFIG_.vipBoxId} .vip_list {display:none; position:absolute; border-radius:10px; left:36px; top:-30px; text-align:center; background:#071827; border:1px solid #0ea5e9;box-shadow:0 12px 30px rgba(2,12,27,.5);padding:10px 0px; width:380px; max-height:420px; overflow-y:auto;}
+                        #${_CONFIG_.vipBoxId} .vip_icon{position:relative;}
+                        #${_CONFIG_.vipBoxId} .vip_list {display:none; position:absolute; border-radius:10px; left:34px; top:-30px; text-align:center; background:#071827; border:1px solid #0ea5e9;box-shadow:0 12px 30px rgba(2,12,27,.5);padding:10px 0px; width:380px; max-height:420px; overflow-y:auto;}
                         #${_CONFIG_.vipBoxId} .vip_list li{border-radius:5px; font-size:12px; color:#e0f7ff; text-align:center; width:calc(25% - 14px); line-height:22px; float:left; border:1px solid #155e75; background:#0b2942; padding:0 4px; margin:4px 2px;overflow:hidden;white-space: nowrap;text-overflow: ellipsis;-o-text-overflow:ellipsis;}
                         #${_CONFIG_.vipBoxId} .vip_list li:hover{color:#ffffff; border:1px solid #38bdf8; background:#0e7490;}
                         #${_CONFIG_.vipBoxId} .vip_list ul{padding-left: 10px; margin:0 0 4px 0;}
@@ -389,8 +392,16 @@ const superVip = (function () {
             if (_CONFIG_.isMobile) {
                 vipBox.find(".vip_icon").on("click", () => vipBox.find(".vip_list").toggle());
             } else {
-                vipBox.find(".vip_icon").on("mouseover", () => vipBox.find(".vip_list").show());
-                vipBox.find(".vip_icon").on("mouseout", () => vipBox.find(".vip_list").hide());
+                const vipIcon = vipBox.find(".vip_icon");
+                const vipList = vipBox.find(".vip_list");
+                let vipListHideTimer = null;
+                vipIcon.on("mouseenter", () => {
+                    clearTimeout(vipListHideTimer);
+                    vipList.show();
+                });
+                vipIcon.on("mouseleave", () => {
+                    vipListHideTimer = setTimeout(() => vipList.hide(), 160);
+                });
             }
 
             let _this = this;

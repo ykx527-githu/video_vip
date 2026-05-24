@@ -2,7 +2,9 @@
 
 **如果这个项目对你有帮助，请给一个 ⭐ Star 支持一下，开源不易，您的支持是我更新的动力！**
 
-## 爱发电：https://ifdian.net/a/xiaozero
+## ❤️ Sponsors
+
+爱发电：https://ifdian.net/a/xiaozero
 
 ## 📖 项目概述
 
@@ -339,8 +341,10 @@ Safari 保护文档：<https://adguard.com/kb/adguard-for-ios/features/safari-pr
 - ✅ 你可以自由地使用、复制、修改和分发本项目。
 - 📝 请在衍生作品中保留原作者的版权声明。
 
----
-## Star History
+## ⭐ Star History
+
+> [!TIP]
+> 如果本项目对您的生活 / 工作产生了帮助，或者您关注本项目的未来发展，请给项目 Star，这是我们维护这个开源项目的动力
 
 [![Star History Chart](https://api.star-history.com/svg?repos=88lin/video_vip&type=date&legend=top-left)](https://www.star-history.com/#88lin/video_vip&type=date&legend=top-left)
 
